@@ -8,6 +8,16 @@ use Illuminate\Auth\Access\Response;
 
 class ProductPolicy
 {
+
+    public function before(User $user): ?bool
+    {
+        // Si l'utilisateur a le rôle admin il a tous les droits grâce à la fonction before
+        if ($user->hasRole('admin')) {
+            return true;
+        }
+        return null;
+    }
+
     /**
      * Determine whether the user can view any models.
      */

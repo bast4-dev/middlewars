@@ -24,6 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        Gate::authorize('create', Product::class);
         return view('products.create');
     }
 
